@@ -125,6 +125,24 @@ class _AddnewsongState extends State<Addnewsong> {
                   ),
                 ),
                 const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          MediaQuery.of(context).platformBrightness ==
+                                  Brightness.dark
+                              ? const Color.fromARGB(255, 238, 20, 83)
+                              : const Color.fromARGB(255, 238, 20, 83),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: const Text('Add song'),
+                  ),
+                ),
               ],
             ),
           ),
