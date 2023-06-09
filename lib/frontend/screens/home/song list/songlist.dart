@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:guitarchords/backend/firebase/getallsongs.dart';
 import 'package:guitarchords/backend/songs/getsongs.dart';
 import 'package:guitarchords/frontend/components/chrods/chrodsview.dart';
 
@@ -94,8 +95,13 @@ class _SongListState extends State<SongList> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (isListEmpty) {
-              return const Center(
-                child: Text('No songs found'),
+              return Scaffold(
+                appBar: AppBar(
+                  title: const Text('Error'),
+                ),
+                body: const Center(
+                  child: Text("No songs found at this movement"),
+                ),
               );
             } else {
               print(widget.type);
@@ -230,8 +236,10 @@ class _SongListState extends State<SongList> {
     AsyncSnapshot<dynamic> snapshot,
   ) {
     return StreamBuilder(
-        stream:
-            getSongList(listType: widget.type, searchValue: widget.searchValue),
+        stream: widget.searchValue == 'All ongs'
+            ? getallsongs()
+            : getSongList(
+                listType: widget.type, searchValue: widget.searchValue),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return SliverList(
