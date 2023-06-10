@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guitarchords/backend/shared/sharedpreferencehelper.dart';
 import 'package:guitarchords/frontend/screens/admin/addnewsong.dart';
-import 'package:guitarchords/frontend/screens/admin/dashboard.dart';
+import 'package:guitarchords/frontend/screens/admin/managesongs.dart';
 import 'package:guitarchords/frontend/screens/login/login.dart';
 
 import '../../screens/admin/addartist.dart';
@@ -276,9 +276,60 @@ class _SidebarState extends State<Sidebar> {
                                               )
                                             },
                                           ),
+                                          // ListTile(
+                                          //   leading: Icon(
+                                          //     Icons.dashboard_outlined,
+                                          //     color: MediaQuery.of(context)
+                                          //                 .platformBrightness ==
+                                          //             Brightness.light
+                                          //         ? Colors.black
+                                          //         : Colors.white,
+                                          //   ),
+                                          //   title: Text(
+                                          //     'Dashboard',
+                                          //     style: TextStyle(
+                                          //       fontSize: 16,
+                                          //       color: MediaQuery.of(context)
+                                          //                   .platformBrightness ==
+                                          //               Brightness.light
+                                          //           ? Colors.black
+                                          //           : Colors.white,
+                                          //     ),
+                                          //   ),
+                                          //   onTap: () => {
+                                          //     Navigator.push(
+                                          //       context,
+                                          //       PageRouteBuilder(
+                                          //         transitionDuration:
+                                          //             const Duration(
+                                          //                 milliseconds: 300),
+                                          //         transitionsBuilder:
+                                          //             (BuildContext context,
+                                          //                 Animation<double>
+                                          //                     animation,
+                                          //                 Animation<double>
+                                          //                     secondaryAnimation,
+                                          //                 Widget child) {
+                                          //           return FadeTransition(
+                                          //             opacity: animation,
+                                          //             child: child,
+                                          //           );
+                                          //         },
+                                          //         pageBuilder: (BuildContext
+                                          //                 context,
+                                          //             Animation<double>
+                                          //                 animation,
+                                          //             Animation<double>
+                                          //                 secondaryAnimation) {
+                                          //           return const Dashboard();
+                                          //         },
+                                          //       ),
+                                          //     )
+                                          //   },
+                                          // ),
                                           ListTile(
                                             leading: Icon(
-                                              Icons.dashboard_outlined,
+                                              Icons.lyrics_outlined,
                                               color: MediaQuery.of(context)
                                                           .platformBrightness ==
                                                       Brightness.light
@@ -286,7 +337,7 @@ class _SidebarState extends State<Sidebar> {
                                                   : Colors.white,
                                             ),
                                             title: Text(
-                                              'Dashboard',
+                                              'Manage Songs',
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 color: MediaQuery.of(context)
@@ -321,56 +372,34 @@ class _SidebarState extends State<Sidebar> {
                                                           animation,
                                                       Animation<double>
                                                           secondaryAnimation) {
-                                                    return const Dashboard();
+                                                    return const ManageSongs();
                                                   },
                                                 ),
                                               )
                                             },
                                           ),
-                                          ListTile(
-                                            leading: Icon(
-                                              Icons.lyrics_outlined,
-                                              color: MediaQuery.of(context)
-                                                          .platformBrightness ==
-                                                      Brightness.light
-                                                  ? Colors.black
-                                                  : Colors.white,
-                                            ),
-                                            title: Text(
-                                              'Manage Songs',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: MediaQuery.of(context)
-                                                            .platformBrightness ==
-                                                        Brightness.light
-                                                    ? Colors.black
-                                                    : Colors.white,
-                                              ),
-                                            ),
-                                            onTap: () => {},
-                                          ),
-                                          ListTile(
-                                            leading: Icon(
-                                              Icons.manage_accounts_outlined,
-                                              color: MediaQuery.of(context)
-                                                          .platformBrightness ==
-                                                      Brightness.light
-                                                  ? Colors.black
-                                                  : Colors.white,
-                                            ),
-                                            title: Text(
-                                              'Manage Users',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: MediaQuery.of(context)
-                                                            .platformBrightness ==
-                                                        Brightness.light
-                                                    ? Colors.black
-                                                    : Colors.white,
-                                              ),
-                                            ),
-                                            onTap: () => {},
-                                          ),
+                                          // ListTile(
+                                          //   leading: Icon(
+                                          //     Icons.manage_accounts_outlined,
+                                          //     color: MediaQuery.of(context)
+                                          //                 .platformBrightness ==
+                                          //             Brightness.light
+                                          //         ? Colors.black
+                                          //         : Colors.white,
+                                          //   ),
+                                          //   title: Text(
+                                          //     'Manage Users',
+                                          //     style: TextStyle(
+                                          //       fontSize: 16,
+                                          //       color: MediaQuery.of(context)
+                                          //                   .platformBrightness ==
+                                          //               Brightness.light
+                                          //           ? Colors.black
+                                          //           : Colors.white,
+                                          //     ),
+                                          //   ),
+                                          //   onTap: () => {},
+                                          // ),
                                           ListTile(
                                             leading: Icon(
                                               Icons.request_page_outlined,

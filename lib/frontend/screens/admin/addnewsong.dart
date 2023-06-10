@@ -31,6 +31,7 @@ class _AddnewsongState extends State<Addnewsong> {
 
   List<String> splitValues = [];
   List<String> names = [];
+  List<String> categories = [];
 
   Future<List<String>> getNameList() async {
     QuerySnapshot querySnapshot =
@@ -39,10 +40,18 @@ class _AddnewsongState extends State<Addnewsong> {
     return names;
   }
 
+  Future<List<String>> getCategoryList() async {
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('categories').get();
+    categories =
+        querySnapshot.docs.map((doc) => doc.get('name') as String).toList();
+    return categories;
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: getNameList(),
+        future: getNameList().then((value) => getCategoryList()),
         builder: (context, snapshot) {
           return Scaffold(
             appBar: AppBar(
@@ -88,7 +97,7 @@ class _AddnewsongState extends State<Addnewsong> {
                               dropdownColor: Colors.black,
                               decoration:
                                   const InputDecoration(prefix: Text('    ')),
-                              hint: const Text('Please choose account type'),
+                              hint: const Text('Please choose artist name'),
                               items: names.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
@@ -214,21 +223,25 @@ class _AddnewsongState extends State<Addnewsong> {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          TextFormField(
-                            controller: category,
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor:
-                                  const Color.fromARGB(75, 224, 224, 224),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(6),
-                                borderSide: BorderSide.none,
-                              ),
-                              hintText: 'Enter song category',
-                              hintStyle: const TextStyle(
-                                  color: Color.fromARGB(99, 158, 158, 158)),
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 15),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(75, 224, 224, 224),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: DropdownButtonFormField<String>(
+                              dropdownColor: Colors.black,
+                              decoration:
+                                  const InputDecoration(prefix: Text('    ')),
+                              hint: const Text('Please choose artist name'),
+                              items: categories.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (_) {},
                             ),
                           ),
                           const SizedBox(height: 20),
