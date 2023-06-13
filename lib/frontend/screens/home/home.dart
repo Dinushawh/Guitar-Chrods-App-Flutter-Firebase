@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guitarchords/frontend/components/navigation/sidenavigation.dart';
 import 'package:guitarchords/frontend/components/navigation/topnavigation.dart';
+import 'package:guitarchords/frontend/screens/home/all%20songs/allsongs.dart';
 import 'package:guitarchords/frontend/screens/home/featuredsongs/featuredsongs.dart';
 import 'package:guitarchords/frontend/screens/home/top%20slider/artists/artist.dart';
 import 'package:guitarchords/frontend/screens/home/top%20slider/topslider.dart';
@@ -81,47 +82,47 @@ class _HomeState extends State<Home> {
                   accountType: widget.accountType,
                   email: widget.email,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 10, right: 10, top: 20, bottom: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Viewed Songs",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const OfflineSongList(
-                          //       title: 'Viewed Songs',
-                          //       songcategory: '',
-                          //     ),
-                          //   ),
-                          // );
-                        },
-                        child: const Text(
-                          "See more",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFEE1453),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // RecentlyViewedSongs(
-                //   accountType: widget.accountType,
-                //   email: widget.email,
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //       left: 10, right: 10, top: 20, bottom: 10),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       const Text(
+                //         "Viewed Songs",
+                //         style: TextStyle(
+                //           fontSize: 18,
+                //           fontWeight: FontWeight.bold,
+                //         ),
+                //       ),
+                //       GestureDetector(
+                //         onTap: () {
+                //           // Navigator.push(
+                //           //   context,
+                //           //   MaterialPageRoute(
+                //           //     builder: (context) => const OfflineSongList(
+                //           //       title: 'Viewed Songs',
+                //           //       songcategory: '',
+                //           //     ),
+                //           //   ),
+                //           // );
+                //         },
+                //         child: const Text(
+                //           "See more",
+                //           style: TextStyle(
+                //             fontSize: 18,
+                //             fontWeight: FontWeight.bold,
+                //             color: Color(0xFFEE1453),
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
                 // ),
+                // // RecentlyViewedSongs(
+                // //   accountType: widget.accountType,
+                // //   email: widget.email,
+                // // ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
                   child: Row(
@@ -202,6 +203,44 @@ class _HomeState extends State<Home> {
                 const FeaturedSongs(
                   songcategory: 'Featured Songs',
                 ),
+
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "All songs",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SongList(
+                                type: 'All songs',
+                                category: 'All songs',
+                                searchValue: 'All songs',
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          "See more",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFFEE1453),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const AllSongs()
               ],
             );
           },

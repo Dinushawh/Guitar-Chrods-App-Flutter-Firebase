@@ -208,19 +208,6 @@ class _ChrodsViewState extends State<ChrodsView> {
                       widgetPadding: 24,
                       lineHeight: 4,
                       horizontalAlignment: CrossAxisAlignment.start,
-                      leadingWidget: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 16,
-                        ),
-                        child: Text(
-                          'Leading Widget',
-                          style: chordStyle,
-                        ),
-                      ),
-                      trailingWidget: Text(
-                        'Trailing Widget',
-                        style: chordStyle,
-                      ),
                     ),
                   ),
                 )

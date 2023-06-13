@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future addNewSong(
     {required String artistName,
-    required String category,
+    required List category,
     required String chrods,
     required String songImage,
     required String songName}) async {
