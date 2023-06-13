@@ -25,8 +25,8 @@ class _AddnewsongState extends State<Addnewsong> {
 
   final formKey = GlobalKey<FormState>();
   final songName = TextEditingController();
-  final artistName = TextEditingController();
-  final category = TextEditingController();
+  late String artistName = '';
+  late String category = '';
   final chords = TextEditingController();
 
   List<String> splitValues = [];
@@ -106,7 +106,11 @@ class _AddnewsongState extends State<Addnewsong> {
                                   ),
                                 );
                               }).toList(),
-                              onChanged: (_) {},
+                              onChanged: (value) {
+                                setState(() {
+                                  artistName = value.toString();
+                                });
+                              },
                             ),
                           ),
                           const SizedBox(
@@ -241,7 +245,11 @@ class _AddnewsongState extends State<Addnewsong> {
                                   ),
                                 );
                               }).toList(),
-                              onChanged: (_) {},
+                              onChanged: (value) {
+                                setState(() {
+                                  category = value.toString();
+                                });
+                              },
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -293,18 +301,18 @@ class _AddnewsongState extends State<Addnewsong> {
                               onPressed: () {
                                 chords.text.isEmpty ||
                                         songName.text.isEmpty ||
-                                        artistName.text.isEmpty ||
-                                        category.text.isEmpty ||
+                                        artistName.isEmpty ||
+                                        category.isEmpty ||
                                         imageUrl.isEmpty
                                     ? showDialogBox2(
                                         title: 'Error',
                                         content: 'Please fill all the fields',
                                       )
-                                    : splitValues = category.text.split(',');
+                                    : splitValues = category.split(',');
                                 addNewSong(
                                   //get category as a list
 
-                                  artistName: artistName.text,
+                                  artistName: artistName,
                                   category: splitValues,
                                   chrods: chords.text,
                                   songImage: imageUrl,
@@ -333,8 +341,6 @@ class _AddnewsongState extends State<Addnewsong> {
   }
 
   clearfeilds() {
-    artistName.clear();
-    category.clear();
     chords.clear();
     songName.clear();
     imageUrl = '';
