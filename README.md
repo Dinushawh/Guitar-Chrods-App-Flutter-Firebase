@@ -1,4 +1,4 @@
-# chordify
+# Guitar chrods 
 
 A new Flutter project.
 
